@@ -4,6 +4,7 @@ import Wrapper from './components/Wrapper';
 import Screen from './components/Screen';
 import ButtonBox from './components/ButtonBox';
 import Button from './components/Button';
+import CalcProvider from './context/CalcContext';
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -15,18 +16,20 @@ const btnValues = [
 
 function App() {
   return (
-    <Wrapper>
-      <Screen />
-      <ButtonBox>
-        {btnValues.flat().map((btn, i) => (
-          <Button
-            key={i}
-            value={btn}
-          />
-        ))}
-      </ButtonBox>
-      <h1>App</h1>
-    </Wrapper>
+    <CalcProvider>
+      <Wrapper>
+        <Screen />
+        <ButtonBox>
+          {btnValues.flat().map((btn, i) => (
+            <Button
+              key={i}
+              value={btn}
+            />
+          ))}
+        </ButtonBox>
+
+      </Wrapper>
+    </CalcProvider>
   );
 }
 
